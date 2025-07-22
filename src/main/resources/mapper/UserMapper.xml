@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.qvtu.shopsysspringboot.mapper.UserMapper">
+    <insert id="register">
+        insert into users(phonenumber,username,userpwd,isadmin) values(#{phonenumber},#{username},#{userpwd},#{isadmin})
+    </insert>
+
+    <select id="login" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Users">
+        select * from users where phonenumber=#{phonenumber}
+    </select>
+    
+    <select id="getUserByPhone" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Users">
+        select * from users where phonenumber=#{phonenumber}
+    </select>
+</mapper>

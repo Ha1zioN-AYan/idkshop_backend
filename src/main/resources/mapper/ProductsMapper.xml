@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.qvtu.shopsysspringboot.mapper.ProductsMapper">
+    <insert id="AddProducts">
+        insert into products (pname, price, imageurl, category) values (#{pname}, #{price}, #{imageurl}, #{category})
+    </insert>
+    <select id="getAllProducts" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Products">
+        select * from products
+    </select>
+    <update id="updateProducts">
+        update products set pname = #{pname}, price = #{price}, imageurl = #{imageurl}, category = #{category} where id = #{id}
+    </update>
+    <delete id="deleteProducts">
+        delete from products where id = #{id}
+    </delete>
+    <select id="getProductsByCategory" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Products">
+        select * from products where category = #{category}
+    </select>
+    <select id="searchProductsByName" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Products">
+        select * from products where pname like concat('%', #{pname}, '%')
+    </select>
+</mapper>

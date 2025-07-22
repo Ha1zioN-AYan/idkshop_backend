@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.qvtu.shopsysspringboot.mapper.OrderMapper">
+    <select id="getOrdersByUsername" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Order">
+        select * from orders where username = #{username} order by createTime desc
+    </select>
+    
+    <select id="getOrderByOrderNumber" resultType="cn.edu.qvtu.shopsysspringboot.pojo.Order">
+        select * from orders where orderNumber = #{orderNumber}
+    </select>
+    
+    <insert id="createOrder">
+        insert into orders (orderNumber, username, totalAmount, status, createTime, updateTime, address, phone) 
+        values (#{orderNumber}, #{username}, #{totalAmount}, #{status}, #{createTime}, #{updateTime}, #{address}, #{phone})
+    </insert>
+    
+    <update id="updateOrderStatus">
+        update orders set status = #{status}, updateTime = now() where orderNumber = #{orderNumber}
+    </update>
+    
+    <select id="getOrderItemsByOrderNumber" resultType="cn.edu.qvtu.shopsysspringboot.pojo.OrderItem">
+        select * from order_items where orderNumber = #{orderNumber}
+    </select>
+    
+    <insert id="addOrderItem">
+        insert into order_items (orderNumber, productId, productName, price, quantity, imageurl) 
+        values (#{orderNumber}, #{productId}, #{productName}, #{price}, #{quantity}, #{imageurl})
+    </insert>
+</mapper>
