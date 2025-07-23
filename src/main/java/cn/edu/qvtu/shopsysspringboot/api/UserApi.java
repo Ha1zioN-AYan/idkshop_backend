@@ -32,10 +32,10 @@ public class UserApi {
     }
 
     //检查管理员状态
-    @GetMapping("/check-admin/{phonenumber}")
-    public ApiData checkAdminStatus(@PathVariable String phonenumber) {
-        return userService.checkAdminStatus(phonenumber);
-    }
+//    @GetMapping("/check-admin/{phonenumber}")
+//    public ApiData checkAdminStatus(@PathVariable String phonenumber) {
+//        return userService.checkAdminStatus(phonenumber);
+//    }
 
 
 }
