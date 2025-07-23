@@ -22,7 +22,7 @@ public class ProductsApi {
     @Autowired
     ProductsService productsService;
 
-    @Value("${file.upload.path:/uploads/}")
+    @Value("${file.upload.path:C:/Users/AthenaYan/IdeaProjects/ShopSysSpringboot/uploads/}")
     private String uploadPath;
 
     //查询所有商品
