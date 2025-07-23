@@ -15,16 +15,19 @@ public class OrderApi {
     @Autowired
     OrderService orderService;
 
+    // 根据用户名查询所有订单
     @GetMapping("/orders/{username}")
     public ApiData getOrdersByUsername(@PathVariable String username) {
         return orderService.getOrdersByUsername(username);
     }
 
+    // 根据订单号查询订单详情
     @GetMapping("/order/details/{orderNumber}")
     public ApiData getOrderDetails(@PathVariable String orderNumber) {
         return orderService.getOrderDetails(orderNumber);
     }
 
+    // 创建订单（从购物车结算）
     @PostMapping("/order/create")
     public ApiData createOrder(@RequestParam String username,
                               @RequestParam String address,
@@ -33,6 +36,7 @@ public class OrderApi {
         return orderService.createOrderFromCart(username, address, phone, cartItems);
     }
 
+    // 更新订单状态
     @PutMapping("/order/status")
     public ApiData updateOrderStatus(@RequestParam String orderNumber,
                                    @RequestParam String status) {
